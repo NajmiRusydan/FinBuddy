@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #f8fafc;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 18px;
+}
+
+h2 {
+    color: #1b9646;
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 2em;
+}
+
+.dashboard-btn {
+    background: #36b95c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 28px;
+    cursor: pointer;
+    transition: background 0.18s;
+    box-shadow: 0 2px 8px rgba(61,190,70,0.09);
+    display: block;
+    margin-left: auto;
+}
+
+.dashboard-btn:hover {
+    background: #22843d;
+}
+
+.table-container {
+    background: #fff;
+    border: 2px solid #65bb5c;
+    border-radius: 15px;
+    padding: 22px 18px 18px 18px;
+    box-shadow: 0 6px 28px rgba(61,190,70,0.07);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1em;
+    background: #f9fcfa;
+}
+
+th, td {
+    border: 1.5px solid #65bb5c;
+    padding: 10px 7px;
+    text-align: center;
+}
+
+th {
+    background: #e0f6e8;
+    color: #21733d;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background: #f5fdf6;
+}
+
+@media (max-width: 700px) {
+    .container { padding: 0 2vw; }
+    .table-container { padding: 10px 2vw; }
+    table, th, td { font-size: 0.96em; }
+}
+
+.dashboard-btn-float {
+    position: fixed;
+    top: 24px;
+    right: 38px;
+    background: #36b95c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    text-align: center;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 500;
+    transition: background 0.16s, box-shadow 0.16s;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(61,190,70,0.12);
+}
+.dashboard-btn-float:hover {
+    background: #1e6c37;
+}
+
+@media (max-width: 600px) {
+    .dashboard-btn-float {
+        top: 12px;
+        right: 10px;
+        padding: 8px 15px;
+        font-size: 0.97em;
+    }
+}
