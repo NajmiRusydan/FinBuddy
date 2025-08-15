@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Expense Tracker</title>
+        <link rel="stylesheet" href="expStyle.css">
+    </head>
+    <body>
+        <a href="dashboard.html" class="dashboard-btn-float">Back to Dashboard</a>
+
+        <!-- Notification message placeholder -->
+        <!-- <div id="notif" class="notif">[Notification Message]</div> -->
+        
+        <div class="exp">
+            <form action="expenseHandler.php" method="post">
+                <fieldset>
+                    <legend>Record Expense</legend>
+
+                    <label for="expamount">Amount: RM</label>
+                    <input type="number" min="1" name="expamount" required><br>
+
+                    <label for="bank">Select Your Bank:</label>
+                    <select name="bank" id="bank" required>
+                        <option value="">-- Select Bank --</option>
+                        <!-- Placeholder bank options -->
+                        <option value="1">Maybank - RM1500.00</option>
+                        <option value="2">CIMB - RM750.50</option>
+                        <option value="3">Public Bank - RM2300.00</option>
+                    </select><br>
+
+                    <label for="exp_type">Expense Category:</label>
+                    <select name="expcateg" id="expcateg" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="Food & Beverages">Food & Beverages</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Rent & Loan">Rent & Loan</option>
+                        <option value="Mobile & Internet">Mobile & Internet</option>
+                        <option value="Education">Education</option>
+                        <option value="Health & Medical">Health & Medical</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Insurance">Insurance</option>
+                        <option value="Donations & Zakat">Donations & Zakat</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <select name="savinggoal" id="savinggoal" style="display:none;">
+                        <option value="">-- Select Saving Goal --</option>
+                        <!-- Placeholder saving goal options -->
+                        <option value="1">New Car (RM5000.00 / RM20000.00)</option>
+                        <option value="2">Vacation (RM1500.00 / RM3000.00)</option>
+                    </select>
+                    <label style="display: inline-flex; align-items: center; gap: 7px;">
+                        <input type="checkbox" id="savexp" name="savexp" value="savexp" onclick="checkSaving()">
+                        Saving Goal
+                    </label><br>
+                    <input type="submit" value="Submit"> 
+                </fieldset>
+                                    
+                <fieldset>
+                    <legend>Expense History</legend>
+
+                    <!-- Placeholder for expense history table -->
+                    <table border='1'>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount (RM)</th>
+                            <th>Date & Time</th>
+                            <th colspan='2'>Action</th>
+                        </tr>
+                        <tr>
+                            <td>Food & Beverages</td>
+                            <td>50.00</td>
+                            <td>2023-10-26 14:30:00</td>
+                            <td><div align="center"><a href="#">delete </a></div></td>
+                        </tr>
+                        <tr>
+                            <td>Transport</td>
+                            <td>15.50</td>
+                            <td>2023-10-25 08:00:00</td>
+                            <td><div align="center"><a href="#">delete </a></div></td>
+                        </tr>
+                        <tr>
+                            <td>Utilities</td>
+                            <td>120.00</td>
+                            <td>2023-10-24 10:00:00</td>
+                            <td><div align="center"><a href="#">delete </a></div></td>
+                        </tr>
+                    </table>
+                </fieldset>
+        </div>
+        <script>
+            function checkSaving() {
+                var savingChecked = document.getElementById('savexp').checked;
+                var expcateg = document.getElementById('expcateg');
+                var savingGoal = document.getElementById('savinggoal');
+
+                if (savingChecked) {
+                    expcateg.disabled = true;
+                    savingGoal.style.display = "inline";
+                } else {
+                    expcateg.disabled = false;
+                    savingGoal.style.display = "none";
+                }
+            }
+        </script>
+    </body>
+</html>
