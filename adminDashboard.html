@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="adminDash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <p class="title">DASHBOARD</p>
+        <p style="text-align: center;">Welcome, [Admin Username]!</p>
+        <p id="datetime" style="text-align:center"></p>
+        <div style="text-align:center; margin-bottom: 20px;">
+            <a href="login.html"><button class="logout-btn">Log Out</button></a>
+        </div>
+        <fieldset>
+            <legend><b>User Logins, Expenses & Saving Goals</b></legend>
+            <div style="display:flex;justify-content:center;align-items:stretch;gap:34px;">
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                    <canvas id="userPie" width="300" height="300"></canvas>
+                    <div style="min-width:160px;">
+                        <p style="font-weight:bold;color:#258d35;font-size:1.12em;margin-bottom:14px;">User Logins</p>
+                        <p>Total logins this month: <b>[User Logins This Month]</b></p>
+                        <p>Average logins per month: <b>[Average Logins Per Month]</b></p>
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                    <canvas id="expPie" width="300" height="300"></canvas>
+                    <div style="min-width:160px;">
+                        <p style="font-weight:bold;color:#258d35;font-size:1.12em;margin-bottom:14px;">Expenses</p>
+                        <p>Total expenses this month: <b>RM[Total Expenses This Month]</b></p>
+                        <p>Average expenses per month: <b>RM[Average Expenses Per Month]</b></p>
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;">
+                    <canvas id="goalPie" width="300" height="300"></canvas>
+                    <div style="min-width:180px;">
+                        <p style="font-weight:bold;color:#258d35;font-size:1.12em;margin-bottom:14px;">Saving Goals</p>
+                        <p>Total completed: <b>[Completed Goal Count]</b></p>
+                        <p>Total money saved: <b>RM[Total Money Saved]</b></p>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="admin-links">
+            <a href="userList.html"><button>Manage Users</button></a>
+            <a href="ViewAllExpense.html"><button>View All Expenses</button></a>
+            <a href="ViewAllSaving.html"><button>View All Savings</button></a>
+            <a href="viewAllLogs.html"><button>View Logs</button></a>
+        </div>
+    </div>
+    <script src="datetime.js"></script>
+    <script>
+        // Placeholder data for charts as dynamic PHP data cannot be used in static HTML
+        const months = ['2023-01', '2023-02', '2023-03', '2023-04'];
+        const loginCounts = [10, 15, 12, 18];
+        new Chart(document.getElementById('userPie'), {
+            type: 'pie',
+            data: {
+                labels: months,
+                datasets: [{
+                    data: loginCounts,
+                    backgroundColor: [
+                        '#4e73df','#1cc88a','#36b9cc','#f6c23e','#e74a3b','#858796','#5a5c69',
+                        '#18ad6b','#22843d','#dfd74e','#9c59b6','#2c3e50','#f39c12'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+        const expMonths = ['2023-01', '2023-02', '2023-03', '2023-04'];
+        const expTotals = [500, 650, 480, 720];
+        new Chart(document.getElementById('expPie'), {
+            type: 'pie',
+            data: {
+                labels: expMonths,
+                datasets: [{
+                    data: expTotals,
+                    backgroundColor: [
+                        '#36b9cc','#f6c23e','#4e73df','#e74a3b','#858796','#1cc88a','#5a5c69',
+                        '#18ad6b','#22843d','#dfd74e','#9c59b6','#2c3e50','#f39c12'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+        const statusLabels = ['Complete', 'Ongoing', 'Past Due'];
+        const statusCounts = [5, 8, 2];
+        new Chart(document.getElementById('goalPie'), {
+            type: 'pie',
+            data: {
+                labels: statusLabels,
+                datasets: [{
+                    data: statusCounts,
+                    backgroundColor: [
+                        '#1cc88a','#f6c23e','#e74a3b','#4e73df','#858796','#5a5c69'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
