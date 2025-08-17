@@ -1,73 +1,67 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.html");
-    exit();
-}
-include 'db_connect.php';
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT USER_EMAIL, USER_PHONE_NO, USERNAME FROM USER WHERE USER_ID = $user_id";
-$result = mysqli_query($conn, $sql) or die("Query failed");
-$row = mysqli_fetch_assoc($result);
-$email = htmlspecialchars($row['USER_EMAIL']);
-$phone = htmlspecialchars($row['USER_PHONE_NO']);
-$username = htmlspecialchars($row['USERNAME']);
-
-$bank_sql = "SELECT BANK_ID, BANK_NAME, BANK_BALANCE FROM bank WHERE USER_ID = $user_id";
-$bank_result = mysqli_query($conn, $bank_sql) or die("Query failed");
-$banks = [];
-while ($bank_row = mysqli_fetch_assoc($bank_result)) {
-    $banks[] = $bank_row;
-}
-?>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="editProfileStyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="edit-profile-container">
-        <form action="updateProfile.php" method="post">
-            <fieldset>
-                <legend>Edit Profile</legend>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <fieldset class="border p-4 rounded">
+                        <legend class="w-auto px-2">Edit Profile</legend>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required value="<?php echo $email; ?>">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required value="user@example.com">
+                        </div>
 
-                <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" required value="<?php echo $phone; ?>">
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" id="phone" name="phone" class="form-control" required value="0123456789">
+                        </div>
 
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required value="<?php echo $username; ?>">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" name="username" class="form-control" required value="username">
+                        </div>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Leave blank to keep current password">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Leave blank to keep current password">
+                        </div>
 
-                <label for="bank_id">Bank</label>
-                <select name="bank_id" id="bank_id">
-                <?php foreach($banks as $b) { ?>
-                    <option value="<?php echo $b['BANK_ID']; ?>"><?php echo $b['BANK_NAME']; ?></option>
-                <?php } ?>
-                </select>
+                        <div class="mb-3">
+                            <label for="bank_id" class="form-label">Bank</label>
+                            <select name="bank_id" id="bank_id" class="form-select">
+                                <option value="1">Maybank</option>
+                                <option value="2">CIMB</option>
+                                <option value="3">Public Bank</option>
+                            </select>
+                        </div>
 
-                <label for="bank_balance">Bank Balance (RM)</label>
-                <input type="number" step="0.01" id="bank_balance" name="bank_balance" required value="">
+                        <div class="mb-3">
+                            <label for="bank_balance" class="form-label">Bank Balance (RM)</label>
+                            <input type="number" step="0.01" id="bank_balance" name="bank_balance" class="form-control" required value="">
+                        </div>
 
-                <div class="button-row">
-                    <button type="submit">Save</button>
-                    <a class="cancel-link" href='dashboard.php'>Cancel</a>
-                </div>
-            </fieldset>
-        </form>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a class="btn btn-secondary" href="dashboard.html">Cancel</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </div>
     <script>
-        const bankData = <?php
-            $bank_json = [];
-            foreach($banks as $b) {
-                $bank_json[$b['BANK_ID']] = $b['BANK_BALANCE'];
-            }
-            echo json_encode($bank_json);
-        ?>;
+        // Example bank data
+        const bankData = {
+            "1": 1000.50,
+            "2": 2500.00,
+            "3": 500.75
+        };
         const bankSelect = document.getElementById('bank_id');
         const balanceInput = document.getElementById('bank_balance');
         function updateBalance() {
@@ -77,5 +71,6 @@ while ($bank_row = mysqli_fetch_assoc($bank_result)) {
         bankSelect.addEventListener('change', updateBalance);
         updateBalance();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
