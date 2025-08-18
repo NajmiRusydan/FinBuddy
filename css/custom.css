@@ -1,4 +1,109 @@
 @charset "UTF-8";
+[data-bs-theme=light] {
+  /* Core colors */
+  --bs-light: #ecf2f2;
+  --bs-dark: #10180f;
+  /* Theme colors */
+  --bs-primary: #52a800;
+  --bs-secondary: #70bc2e;
+  --bs-info: #9eb44b;
+  --bs-accent1: #1f512a;
+  --bs-accent2: #0c3222;
+  --bs-accent3: #c1e69f;
+  --bs-success: #14b500;
+  --bs-warning: #fdc600;
+  --bs-danger: #f9004e;
+  /* RGB versions */
+  --bs-light-rgb: 236, 242, 242;
+  --bs-dark-rgb: 16, 24, 15;
+  --bs-primary-rgb: 82, 168, 0;
+  --bs-secondary-rgb: 112, 188, 46;
+  --bs-info-rgb: 158, 180, 75;
+  --bs-accent1-rgb: 31, 81, 42;
+  --bs-accent2-rgb: 12, 50, 34;
+  --bs-accent3-rgb: 193, 230, 159;
+  --bs-success-rgb: 20, 181, 0;
+  --bs-warning-rgb: 253, 198, 0;
+  --bs-danger-rgb: 249, 0, 78;
+  /* Text emphasis */
+  --bs-primary-text-emphasis: #3a7d00; /* Darker shade of primary */
+  --bs-secondary-text-emphasis: #549624; /* Darker shade of secondary */
+  --bs-success-text-emphasis: #0f8a00; /* Darker shade of success */
+  --bs-info-text-emphasis: #7d8f3c; /* Darker shade of info */
+  --bs-warning-text-emphasis: #c99a00; /* Darker shade of warning */
+  --bs-danger-text-emphasis: #c6003e; /* Darker shade of danger */
+  --bs-light-text-emphasis: #495057; /* Standard dark gray for light bg */
+  --bs-dark-text-emphasis: #495057; /* Standard dark gray for dark text */
+  /* Background subtle */
+  --bs-primary-bg-subtle: #e6f4d5; /* Very light tint of primary */
+  --bs-secondary-bg-subtle: #e8f5dc; /* Very light tint of secondary */
+  --bs-success-bg-subtle: #d5f5d0; /* Very light tint of success */
+  --bs-info-bg-subtle: #f0f5e0; /* Very light tint of info */
+  --bs-warning-bg-subtle: #fff8e0; /* Very light tint of warning */
+  --bs-danger-bg-subtle: #ffe0e8; /* Very light tint of danger */
+  --bs-light-bg-subtle: #f5f9f9; /* Very light tint of light */
+  --bs-dark-bg-subtle: #d8dbd7; /* Very light tint of dark */
+  /* Border subtle */
+  --bs-primary-border-subtle: #cce9aa; /* Light tint of primary */
+  --bs-secondary-border-subtle: #d1ebb9; /* Light tint of secondary */
+  --bs-success-border-subtle: #aaeba5; /* Light tint of success */
+  --bs-info-border-subtle: #e0ebc1; /* Light tint of info */
+  --bs-warning-border-subtle: #fff1c1; /* Light tint of warning */
+  --bs-danger-border-subtle: #ffc1d1; /* Light tint of danger */
+  --bs-light-border-subtle: #e9ecef;
+  --bs-dark-border-subtle: #adb5bd;
+}
+
+[data-bs-theme=dark] {
+  /* Theme colors - slightly brighter for dark mode */
+  --bs-primary: #63c800;
+  --bs-secondary: #85d64a;
+  --bs-info: #b3c86a;
+  --bs-accent1: #2a6b38;
+  --bs-accent2: #0f4230;
+  --bs-accent3: #d1f0b3;
+  --bs-success: #1ad400;
+  --bs-warning: #ffd633;
+  --bs-danger: #ff1a6a;
+  /* RGB versions */
+  --bs-primary-rgb: 99, 200, 0;
+  --bs-secondary-rgb: 133, 214, 74;
+  --bs-info-rgb: 179, 200, 106;
+  --bs-accent1-rgb: 42, 107, 56;
+  --bs-accent2-rgb: 15, 66, 48;
+  --bs-accent3-rgb: 209, 240, 179;
+  --bs-success-rgb: 26, 212, 0;
+  --bs-warning-rgb: 255, 214, 51;
+  --bs-danger-rgb: 255, 26, 106;
+  /* Text emphasis */
+  --bs-primary-text-emphasis: #8dff33; /* Bright tint for visibility */
+  --bs-secondary-text-emphasis: #a5e67a; /* Bright tint */
+  --bs-success-text-emphasis: #4dff4d; /* Bright tint */
+  --bs-info-text-emphasis: #d4e6a1; /* Bright tint */
+  --bs-warning-text-emphasis: #ffe680; /* Bright tint */
+  --bs-danger-text-emphasis: #ff80aa; /* Bright tint */
+  --bs-light-text-emphasis: #f8f9fa;
+  --bs-dark-text-emphasis: #dee2e6;
+  /* Background subtle */
+  --bs-primary-bg-subtle: #1a3300; /* Very dark shade */
+  --bs-secondary-bg-subtle: #233a0e; /* Very dark shade */
+  --bs-success-bg-subtle: #0a3300; /* Very dark shade */
+  --bs-info-bg-subtle: #3a421a; /* Very dark shade */
+  --bs-warning-bg-subtle: #4d3d00; /* Very dark shade */
+  --bs-danger-bg-subtle: #4d001a; /* Very dark shade */
+  --bs-light-bg-subtle: #343a40;
+  --bs-dark-bg-subtle: #1a1d20;
+  /* Border subtle */
+  --bs-primary-border-subtle: #2d4d00; /* Dark shade */
+  --bs-secondary-border-subtle: #3a5c1a; /* Dark shade */
+  --bs-success-border-subtle: #145c00; /* Dark shade */
+  --bs-info-border-subtle: #5c6b2d; /* Dark shade */
+  --bs-warning-border-subtle: #997a00; /* Dark shade */
+  --bs-danger-border-subtle: #990033; /* Dark shade */
+  --bs-light-border-subtle: #495057;
+  --bs-dark-border-subtle: #343a40;
+}
+
 /*!
  * Bootstrap  v5.3.7 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
@@ -99,11 +204,11 @@
   --bs-tertiary-bg: #f8f9fa;
   --bs-tertiary-bg-rgb: 248, 249, 250;
   --bs-heading-color: inherit;
-  --bs-link-color: #0d6efd;
-  --bs-link-color-rgb: 13, 110, 253;
+  --bs-link-color: #52a800;
+  --bs-link-color-rgb: 82, 168, 0;
   --bs-link-decoration: underline;
-  --bs-link-hover-color: rgb(10.4, 88, 202.4);
-  --bs-link-hover-color-rgb: 10, 88, 202;
+  --bs-link-hover-color: #70bc2e;
+  --bs-link-hover-color-rgb: 112, 188, 46;
   --bs-code-color: #d63384;
   --bs-highlight-color: #212529;
   --bs-highlight-bg: rgb(255, 242.6, 205.4);
@@ -2924,6 +3029,8 @@ textarea.form-control-lg {
   background-color: var(--bs-btn-bg);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;
@@ -3005,18 +3112,18 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  --bs-btn-color: #000;
+  --bs-btn-color: var(--bs-white);
   --bs-btn-bg: #52a800;
   --bs-btn-border-color: #52a800;
-  --bs-btn-hover-color: #000;
+  --bs-btn-hover-color: #var(--bs-white);
   --bs-btn-hover-bg: rgb(107.95, 181.05, 38.25);
   --bs-btn-hover-border-color: rgb(99.3, 176.7, 25.5);
   --bs-btn-focus-shadow-rgb: 70, 143, 0;
-  --bs-btn-active-color: #000;
+  --bs-btn-active-color: #var(--bs-white);
   --bs-btn-active-bg: rgb(116.6, 185.4, 51);
   --bs-btn-active-border-color: rgb(99.3, 176.7, 25.5);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-color: #var(--bs-white);
   --bs-btn-disabled-bg: #52a800;
   --bs-btn-disabled-border-color: #52a800;
 }

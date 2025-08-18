@@ -1,16 +1,85 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body { background: #f8f9fa; }
-        .dashboard-title { font-size: 2em; font-weight: bold; letter-spacing: 1px; margin-bottom: 0.4em; }
-        .card { margin-bottom: 2em; }
+        body {
+            background: #f8f9fa;
+        }
+
+        .dashboard-title {
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 0.4em;
+        }
+
+        .card {
+            margin-bottom: 2em;
+        }
     </style>
 </head>
+
 <body>
+    <!-- Minimal Bootstrap Sidebar -->
+    <div class="d-flex flex-column flex-shrink-0 bg-light border-end position-fixed"
+        style="width: 4.5rem; height: 100vh; z-index: 100;">
+        <a href="/" class="d-block p-3 text-center border-bottom">
+            <img src="MEDIA/FINBUDDY(1).png" alt="App Logo" class="img-fluid" style="max-height: 40px;">
+        </a>
+        <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+            <li class="nav-item">
+                <a href="expense.html" class="py-3 border-bottom fs-3 nav-link icon-animate" title="Expense" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cash-stack expense-icon" viewBox="0 0 16 16">
+                        <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                        <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
+                    </svg>
+                </a>
+            </li>
+            <style>
+                .icon-animate .expense-icon {
+                    transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+                }
+                .icon-animate:hover .expense-icon {
+                    transform: scale(1.2) ;
+                }
+            </style>
+            <li>
+                <a href="saving.html" class="nav-link py-3 border-bottom" title="Savings Goal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-piggy-bank" viewBox="0 0 16 16"></svg>
+                        <path d="M5.5 5a.5.5 0 0 1 .5-.5h.5V4a2 2 0 1 1 4 0v.5h.5a.5.5 0 0 1 .5.5v1.5a.5.5 0 0 1-.5.5H6a.5.5 0 0 1-.5-.5V5zm1-1a1 1 0 0 0-1 1v.5h4V5a1 1 0 0 0-1-1h-2z"/>
+                        <path d="M2 8a6 6 0 1 1 12 0A6 6 0 0 1 2 8zm6-5a5 5 0 1 0 0 10A5 5 0 0 0 8 3z"/>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="bankDisplay.html" class="nav-link py-3 border-bottom" title="Balance">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+  <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
+</svg>
+                </a>
+            </li>
+            <li></svg>
+                <a href="bankDisplay.html" class="nav-link py-3 border-bottom" title="Balance">
+                    <i class="bi bi-wallet2"></i>
+                </a>
+            </li>
+            
+        </ul>
+        <div class="dropend border-top"> <a href="#" class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle"> </a>
+            <ul class="dropdown-menu text-small shadow">
+                <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Log Out</a></li>
+            </ul>
+        </div>
+        <!-- End Sidebar -->
+    </div>
+
     <div class="container py-5">
         <div class="text-center mb-4">
             <div class="dashboard-title">DASHBOARD</div>
@@ -98,7 +167,7 @@
                 if (budget_amount > 0) {
                     document.getElementById('cancelEdit').onclick = () => location.reload();
                 }
-                document.getElementById('budgetForm').onsubmit = function(e) {
+                document.getElementById('budgetForm').onsubmit = function (e) {
                     e.preventDefault();
                     alert('Budget saved! (Demo)');
                     location.reload();
@@ -110,7 +179,7 @@
                     <p>Average expense per day: RM${average_expense.toFixed(2)}</p>
                     ${total_expense > budget_amount
                         ? '<p class="text-danger fw-bold">You are over your budget!</p>'
-                        : `<p>You have RM${(budget_amount-total_expense).toFixed(2)} left before reaching your budget.</p>`
+                        : `<p>You have RM${(budget_amount - total_expense).toFixed(2)} left before reaching your budget.</p>`
                     }
                     <button type="button" class="btn btn-outline-primary" id="editBudgetBtn">Edit Budget</button>
                 `;
@@ -127,7 +196,7 @@
                 datasets: [{
                     data: expense_totals,
                     backgroundColor: [
-                        '#4e73df','#1cc88a','#36b9cc','#f6c23e','#e74a3b','#858796','#5a5c69'
+                        '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b', '#858796', '#5a5c69'
                     ]
                 }]
             }
@@ -166,7 +235,7 @@
                         plugins: {
                             tooltip: {
                                 callbacks: {
-                                    label: function(context) {
+                                    label: function (context) {
                                         return context.label + ': RM' + context.parsed;
                                     }
                                 }
@@ -180,19 +249,21 @@
 
         updateSavingPie(currentGoalIdx);
 
-        document.getElementById('prevGoal').onclick = function() {
+        document.getElementById('prevGoal').onclick = function () {
             if (saving_goals.length === 0) return;
             currentGoalIdx = (currentGoalIdx - 1 + saving_goals.length) % saving_goals.length;
             updateSavingPie(currentGoalIdx);
         };
-        document.getElementById('nextGoal').onclick = function() {
+        document.getElementById('nextGoal').onclick = function () {
             if (saving_goals.length === 0) return;
             currentGoalIdx = (currentGoalIdx + 1) % saving_goals.length;
             updateSavingPie(currentGoalIdx);
         };
 
         // Dummy datetime
-        document.getElementById('datetime').innerText = new Date().toLocaleString();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+</html>
 </html>
