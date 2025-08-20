@@ -3487,6 +3487,17 @@ textarea.form-control-lg {
   --bs-btn-border-radius: var(--bs-border-radius-sm);
 }
 
+.icon-animate .nav-icon {
+            transition: transform 0.3s cubic-bezier(.68, -0.55, .27, 1.55);
+        }
+
+        .icon-animate:hover {
+            .nav-icon {
+                transform: scale(1.2);
+            }
+        }
+
+
 .fade {
   transition: opacity 0.15s linear;
 }
@@ -3942,6 +3953,11 @@ textarea.form-control-lg {
   border-top-right-radius: 0;
 }
 
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-white);
+  --bs-tooltip-color: var(--bs-black);
+}
+
 .nav {
   --bs-nav-link-padding-x: 1rem;
   --bs-nav-link-padding-y: 0.5rem;
@@ -4020,7 +4036,7 @@ textarea.form-control-lg {
 .nav-pills {
   --bs-nav-pills-border-radius: var(--bs-border-radius);
   --bs-nav-pills-link-active-color: #ffffff;
-  --bs-nav-pills-link-active-bg: #0d6efd;
+  --bs-nav-pills-link-active-bg: var(--bs-secondary);
 }
 .nav-pills .nav-link {
   border-radius: var(--bs-nav-pills-border-radius);
