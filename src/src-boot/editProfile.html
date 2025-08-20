@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+    <link href="/css/custom.css" rel="stylesheet" >
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <fieldset class="border p-4 rounded">
+                        <legend class="w-auto px-2">Edit Profile</legend>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required value="user@example.com">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" id="phone" name="phone" class="form-control" required value="0123456789">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" name="username" class="form-control" required value="username">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Leave blank to keep current password">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bank_id" class="form-label">Bank</label>
+                            <select name="bank_id" id="bank_id" class="form-select">
+                                <option value="1">Maybank</option>
+                                <option value="2">CIMB</option>
+                                <option value="3">Public Bank</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bank_balance" class="form-label">Bank Balance (RM)</label>
+                            <input type="number" step="0.01" id="bank_balance" name="bank_balance" class="form-control" required value="">
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a class="btn btn-secondary" href="dashboard.html">Cancel</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Example bank data
+        const bankData = {
+            "1": 1000.50,
+            "2": 2500.00,
+            "3": 500.75
+        };
+        const bankSelect = document.getElementById('bank_id');
+        const balanceInput = document.getElementById('bank_balance');
+        function updateBalance() {
+            const selectedBank = bankSelect.value;
+            balanceInput.value = bankData[selectedBank] ?? '';
+        }
+        bankSelect.addEventListener('change', updateBalance);
+        updateBalance();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

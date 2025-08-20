@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Saving Goal</title>
+    <link href="/css/custom.css" rel="stylesheet" >
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <a href="saving.php" class="btn btn-secondary mb-4">Back to Saving Goals</a>
+        <div class="card shadow">
+            <div class="card-body">
+                <form action="savEditHandler.php" method="post">
+                    <fieldset>
+                        <legend class="mb-4">Edit Saving Target</legend>
+                        <input type="hidden" name="goal_id" value="">
+                        <div class="mb-3">
+                            <label for="savename" class="form-label">Saving Name:</label>
+                            <input type="text" class="form-control" id="savename" name="savename" required value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="saveamount" class="form-label">Amount: RM</label>
+                            <input type="number" class="form-control" id="saveamount" min="1" name="saveamount" required value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="freq" class="form-label">Select Frequency:</label>
+                            <select class="form-select" name="freq" id="freq" required>
+                                <option value="">-- Select Frequency --</option>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Weekly">Weekly</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="savedeadline" class="form-label">Deadline:</label>
+                            <input type="date" class="form-control" id="savedeadline" name="savedeadline" required min="">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

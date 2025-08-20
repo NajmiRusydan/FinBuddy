@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+  
+    <link href="/css/custom.css" rel="stylesheet" >
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container py-4">
+        <h2 class="text-center mb-4">DASHBOARD</h2>
+        <p class="text-center">Welcome, <span id="username">Admin</span>!</p>
+        <p id="datetime" class="text-center"></p>
+        <div class="text-center mb-4">
+            <a href="login.php" class="btn btn-danger">Log Out</a>
+        </div>
+        <fieldset class="border p-3 mb-4">
+            <legend class="w-auto px-2"><b>User Logins, Expenses & Saving Goals</b></legend>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <canvas id="userPie" width="300" height="300"></canvas>
+                    <div class="mt-3 w-100 text-center">
+                        <p class="fw-bold text-success fs-5 mb-2">User Logins</p>
+                        <p>Total logins this month: <b id="userThisMonth">0</b></p>
+                        <p>Average logins per month: <b id="avgUserMonth">0.0</b></p>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <canvas id="expPie" width="300" height="300"></canvas>
+                    <div class="mt-3 w-100 text-center">
+                        <p class="fw-bold text-success fs-5 mb-2">Expenses</p>
+                        <p>Total expenses this month: <b id="expThisMonth">RM0.00</b></p>
+                        <p>Average expenses per month: <b id="avgExpMonth">RM0.00</b></p>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <canvas id="goalPie" width="300" height="300"></canvas>
+                    <div class="mt-3 w-100 text-center">
+                        <p class="fw-bold text-success fs-5 mb-2">Saving Goals</p>
+                        <p>Total completed: <b id="completedGoals">0</b></p>
+                        <p>Total money saved: <b id="totalSaved">RM0.00</b></p>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <a href="userList.php" class="btn btn-primary">Manage Users</a>
+            <a href="ViewAllExpense.php" class="btn btn-primary">View All Expenses</a>
+            <a href="ViewAllSaving.php" class="btn btn-primary">View All Savings</a>
+            <a href="viewAllLogs.php" class="btn btn-primary">View Logs</a>
+        </div>
+    </div>
+    <script src="datetime.js"></script>
+    <script>
+        // Dummy data for demonstration
+        const months = ["2024-01", "2024-02", "2024-03", "2024-04"];
+        const loginCounts = [12, 15, 10, 18];
+        const expMonths = ["2024-01", "2024-02", "2024-03", "2024-04"];
+        const expTotals = [1200, 1500, 1100, 1800];
+        const statusLabels = ["Complete", "In Progress", "Not Started"];
+        const statusCounts = [5, 8, 2];
+
+        // Set summary values
+        document.getElementById('userThisMonth').textContent = loginCounts[loginCounts.length - 1];
+        document.getElementById('avgUserMonth').textContent = (loginCounts.reduce((a,b)=>a+b,0)/loginCounts.length).toFixed(1);
+        document.getElementById('expThisMonth').textContent = "RM" + expTotals[expTotals.length - 1].toFixed(2);
+        document.getElementById('avgExpMonth').textContent = "RM" + (expTotals.reduce((a,b)=>a+b,0)/expTotals.length).toFixed(2);
+        document.getElementById('completedGoals').textContent = statusCounts[0];
+        document.getElementById('totalSaved').textContent = "RM" + (expTotals.reduce((a,b)=>a+b,0)).toFixed(2);
+
+        new Chart(document.getElementById('userPie'), {
+            type: 'pie',
+            data: {
+                labels: months,
+                datasets: [{
+                    data: loginCounts,
+                    backgroundColor: [
+                        '#4e73df','#1cc88a','#36b9cc','#f6c23e'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+        new Chart(document.getElementById('expPie'), {
+            type: 'pie',
+            data: {
+                labels: expMonths,
+                datasets: [{
+                    data: expTotals,
+                    backgroundColor: [
+                        '#36b9cc','#f6c23e','#4e73df','#e74a3b'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+        new Chart(document.getElementById('goalPie'), {
+            type: 'pie',
+            data: {
+                labels: statusLabels,
+                datasets: [{
+                    data: statusCounts,
+                    backgroundColor: [
+                        '#1cc88a','#f6c23e','#e74a3b'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
