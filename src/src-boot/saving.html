@@ -1,83 +1,180 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Saving Goal</title>
-    <link href="/css/custom.css" rel="stylesheet" >
+    <link href="/css/custom.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-    <div class="container py-4">
-        <a href="dashboard.php" class="btn btn-secondary mb-3">Back to Dashboard</a>
-        <!-- Notification placeholder -->
-        <div id="notif" class="alert alert-info d-none"></div>
-        <div class="row">
-            <div class="col-md-6">
-                <form action="savingHandler.php" method="post" class="card p-4 mb-4 shadow-sm">
-                    <fieldset>
-                        <legend class="mb-3">Create New Saving Target</legend>
-                        <div class="mb-3">
-                            <label for="savename" class="form-label">Saving Name:</label>
-                            <input type="text" name="savename" id="savename" class="form-control" required>
+
+<body>
+
+    <div class="container-fluid ">
+        <div class="row ">
+            <div class="d-flex flex-column flex-shrink-0 bg-light border-end  start-0 col-sm-1 vh-100 sticky-top">
+                <a href="/" class="d-block p-2 py-3 text-center border-bottom">
+                    <img src="MEDIA/FINBUDDY(1).png" alt="App Logo" class="img-fluid icon-animate"
+                        style="max-height: 40px;">
+                </a>
+                <ul class="nav nav-pills flex-column mb-auto text-center" style="font-size: 1.1rem;">
+                    <li class="nav-item my-2 border-bottom">
+                        <a href="dashboard.html" class="py-2  nav-link icon-animate position-relative "
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard"
+                            style="padding-left: 0; padding-right: 0; font-size: 0.95rem;">
+                            <div class="d-flex justify-content-center align-items-center" style="height: 32px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    fill="var(--bs-dark-border-subtle)" class="bi bi-grid nav-icon" viewBox="0 0 16 16">
+                                    <path
+                                        d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item my-2">
+                        <a href="expense.html" class="py-2 border-bottom nav-link icon-animate "
+                             data-bs-toggle="tooltip" data-bs-placement="right" title="Expenses"
+                            style="padding-left: 0; padding-right: 0;">
+                            <div class="d-flex justify-content-center align-items-center" style="height: 32px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--bs-dark-border-subtle)"
+                                    class="bi bi-cash-stack nav-icon" viewBox="0 0 16 16">
+                                    <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                                    <path
+                                        d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="saving.html" class="nav-link py-2 my-2 border-bottom icon-animate active" aria-current="page"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Savings Goals"
+                            style="padding-left: 0; padding-right: 0;">
+                            <div class="d-flex justify-content-center align-items-center" style="height: 32px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    fill="currentColor" class="bi bi-bullseye nav-icon"
+                                    viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10m0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12" />
+                                    <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8" />
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                                </svg>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bankDisplay.html" class="nav-link py-2 border-bottom icon-animate"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Account Balance"
+                            style="padding-left: 0; padding-right: 0;">
+                            <div class="d-flex justify-content-center align-items-center" style="height: 32px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    fill="var(--bs-dark-border-subtle)" class="bi bi-wallet2 nav-icon"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="dropend border-top mt-auto">
+                    <a href="#"
+                        class="d-flex align-items-center justify-content-center p-2 link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="20" height="20" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small shadow">
+                        <li><a class="dropdown-item" href="editProfile.html">Edit Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="login.html">Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- End Sidebar -->
+            </div>
+            <!-- Notification placeholder -->
+            <main class="col-md-11 ms-sm-auto col-lg-11 px-md-4 ">
+                <div class="col pt-4">
+
+                    <div class="row mb-4 mt-6">
+                        <div class="col-12 text-start">
+                            <h3 class="display-5 fw-bold text-primary">Savings Target</h3>
+                            
                         </div>
-                        <div class="mb-3">
-                            <label for="saveamount" class="form-label">Amount: RM</label>
-                            <input type="number" min="1" name="saveamount" id="saveamount" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="freq" class="form-label">Select Frequency:</label>
-                            <select name="freq" id="freq" class="form-select" required>
-                                <option value="">-- Select Frequency --</option>
-                                <option value="Monthly">Monthly</option>
-                                <option value="Weekly">Weekly</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="savedeadline" class="form-label">Deadline:</label>
-                            <input type="date" name="savedeadline" id="savedeadline" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                    <form action="savingHandler.php" method="post" class="card p-4 mb-4 shadow-sm">
+                        <fieldset>
+                            <legend class="mb-3">Create New Saving Target</legend>
+                            <div class=" row row-cols-2">
+                            <div class="mb-3">
+                                <label for="savename" class="form-label">Saving Name:</label>
+                                <input type="text" name="savename" id="savename" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="saveamount" class="form-label">Amount: RM</label>
+                                <input type="number" min="1" name="saveamount" id="saveamount" class="form-control"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="freq" class="form-label">Select Frequency:</label>
+                                <select name="freq" id="freq" class="form-select" required>
+                                    <option value="">-- Select Frequency --</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Weekly">Weekly</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="savedeadline" class="form-label">Deadline:</label>
+                                <input type="date" name="savedeadline" id="savedeadline" class="form-control" required>
+                            </div>
+                             </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                           
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col">
+                    <fieldset class="card p-4 shadow-sm">
+                        <legend class="mb-3">Saving Goal History</legend>
+                        <!-- Example Table, replace with dynamic data as needed -->
+                        <table class="table table-bordered table-striped align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Frequency</th>
+                                    <th>Target(RM)</th>
+                                    <th>Average Saving(RM)</th>
+                                    <th>Current(RM)</th>
+                                    <th>Deadline</th>
+                                    <th>Days</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Example row, replace with dynamic rows -->
+                                <tr>
+                                    <td>Vacation</td>
+                                    <td>Monthly</td>
+                                    <td>1000.00</td>
+                                    <td>100.00</td>
+                                    <td>200.00</td>
+                                    <td>2024-12-31</td>
+                                    <td>200</td>
+                                    <td>Active</td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap">
+                                <a href="savEdit.php?goal_id=5" class="btn btn-sm btn-warning me-1"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="savDelHandler.php?goal_id=5" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                                    </td>
+                                </tr>
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table>
                     </fieldset>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <fieldset class="card p-4 shadow-sm">
-                    <legend class="mb-3">Saving Goal History</legend>
-                    <!-- Example Table, replace with dynamic data as needed -->
-                    <table class="table table-bordered table-striped align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Name</th>
-                                <th>Frequency</th>
-                                <th>Target(RM)</th>
-                                <th>Average Saving(RM)</th>
-                                <th>Current(RM)</th>
-                                <th>Deadline</th>
-                                <th>Days</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Example row, replace with dynamic rows -->
-                            <tr>
-                                <td>Vacation</td>
-                                <td>Monthly</td>
-                                <td>1000.00</td>
-                                <td>100.00</td>
-                                <td>200.00</td>
-                                <td>2024-12-31</td>
-                                <td>200</td>
-                                <td>Active</td>
-                                <td>
-                                    <a href="savEdit.php?goal_id=1" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="savDelHandler.php?goal_id=1" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                            <!-- Add more rows as needed -->
-                        </tbody>
-                    </table>
-                </fieldset>
-            </div>
+                </div>
+            </main>
         </div>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -89,4 +186,5 @@
         // }, 3000);
     </script>
 </body>
+
 </html>

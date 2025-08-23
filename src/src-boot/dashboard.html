@@ -113,17 +113,19 @@
 
     <!-- Main Content -->
     <div class="container py-5 col-10">
-        <div class="text-start mb-4">
-            <div class="dashboard-title">DASHBOARD</div>
-            <div>Welcome, <span id="username">User</span>!</div>
-            <div id="datetime"></div>
-           
-        </div>
+        
+                <div class=" mb-4">
+                    <div class="col-12 text-start">
+                        <h1 class="display-5 fw-bold text-primary">DASHBOARD</h1>
+                        <div>Welcome, <span id="username">User</span>!</div>
+                        <div id="datetime"></div>
+                    </div>
+                </div>
 
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><b>Budget for This Month</b></div>
+                    <div class="card-header"><b>Monthly Budget Review</b></div>
                     <div class="card-body" id="budgetSection">
                         <!-- Budget form or info will be injected by JS -->
                     </div>
@@ -132,16 +134,16 @@
         </div>
 
         <div class="row justify-content-center g-4">
-            <div class="col-md-5">
-                <div class="card">
+            <div class="col-md-5 mb-3">
+                <div class="card h-100">
                     <div class="card-header"><b>Monthly Expense Breakdown</b></div>
                     <div class="card-body">
                         <canvas id="expensePie" width="300" height="300"></canvas>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <div class="card">
+            <div class="col-md-5 mb-3">
+                <div class="card h-100">
                     <div class="card-header"><b>Saving Goal Progress</b></div>
                     <div class="card-body text-center">
                         <div id="goalTitle" class="fw-bold mb-2"></div>
@@ -155,10 +157,7 @@
             </div>
         </div>
 
-        <div class="text-center mt-5">
-            <a href="expense.html" class="btn btn-success me-2">Expense Tracker</a>
-            <a href="saving.html" class="btn btn-warning">Saving Goal</a>
-        </div>
+       
     </div>
     </div>
     </div>
@@ -204,11 +203,11 @@
             } else {
                 section.innerHTML = `
                     <p>Monthly Budget: <b>RM${budget_amount.toFixed(2)}</b></p>
-                    <p>Total Spent: RM${total_expense.toFixed(2)}</p>
-                    <p>Daily Average: RM${average_expense.toFixed(2)}</p>
+                    <p>Total Spent: <b>RM${total_expense.toFixed(2)}</b></p>
+                    <p>Daily Average: <b>RM${average_expense.toFixed(2)}</b></p>
                     ${total_expense > budget_amount
                         ? '<p class="text-danger fw-bold">Budget Exceeded!</p>'
-                        : `<p>You can still spend RM${(budget_amount - total_expense).toFixed(2)} before reaching your limit.</p>`
+                        : `<p>You have <b>RM${(budget_amount - total_expense).toFixed(2)}</b> left before reaching your budget limit.</p>`
                     }
                     <button type="button" class="btn btn-outline-primary" id="editBudgetBtn">Edit Budget</button>
                 `;
